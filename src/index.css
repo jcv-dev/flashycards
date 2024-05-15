@@ -1,16 +1,28 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: 0;
-  max-width: 38rem;
-  padding: 0;
-  position:relative;
-  overflow:hidden;
+    margin: 0; /* Remove default body margin */
+    margin-left:200px;
+    margin-top:50px;
+    padding: 0; /* Remove default body padding */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+    height: 100vh; /* Ensure full viewport height */
 }
 
-.content {
-    margin-left: 200px;
-    padding: 20px;
+#content {
+    text-align: center; /* Center content horizontally */
+    margin-left: 200px; /* Adjust for the sidebar width */
+    position:relative;
+}
+
+#title {
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    align-items:center;
+    justify-content:center;
+    right: 0;
+    padding: 20px; /* Adjust padding as needed */
+    border-bottom: 1px solid #ccc; /* Example border style */
 }
 
 .sidebar {
@@ -87,3 +99,75 @@ body {
 html, body{
   overflow:hidden;
 }
+
+#flashcardContainer {
+    font-size:24px;
+    justify:center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center; /* Center all content */
+    margin: 0 auto; /* Center the flashcard container */
+    margin-top:200px;
+    max-width: 500px; /* Optional: Set a maximum width for the flashcard container */
+}
+
+
+#flashcardTitle {
+    font-weight: bold;
+    font-size: 32px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom:20px;
+    padding-bottom:15px;
+}
+
+#flashcardContent {
+    margin-bottom: 20px; /* Add some space below the content */
+}
+
+#flashcardAnswerButton {
+    font-weight: bold;
+    max-width: 185px; /* Adjusted to accommodate padding */
+    text-align: center; /* Center text within buttons */
+    background-color: #7353BA; /* Green background color */
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    border-radius:25px;
+    margin-bottom:20px;
+}
+
+#flashcardAnswerButton:hover {
+    background-color: #45a049;
+}
+
+#flashcardAnswer {
+    border-top: 1px solid #ccc;
+    padding-top:15px;
+    display: none;
+    margin-bottom:20px;
+}
+
+button {
+    font-weight: bold;
+    max-width: 185px; /* Adjusted to accommodate padding */
+    padding: 10px;
+    margin-bottom: 5px; /* Adjust the spacing between buttons */
+    text-align: center; /* Center text within buttons */
+    background-color: #7353BA; /* Green background color */
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    border-radius:25px;
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
