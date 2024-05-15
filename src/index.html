@@ -6,22 +6,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <link rel="stylesheet" href="index.css" />
     <script defer src="render.js"></script>
-    
   </head>
+
   <body>
   
-    <div class="sidebar">
-        <!-- Sidebar content goes here -->
-        <ul>
-            <li><a href="#">Option 1</a></li>
-            <li><a href="#">Option 2</a></li>
-            <li><a href="#">Option 3</a></li>
-        </ul>
-    </div>
+    <div class="sidebar" id="sidebar"></div>
 
     <div class="content">
-        <!-- Main content goes here -->
-        <h1>Main Content</h1>
+        <h1>⚡️ Flashycards ⚡️</h1>
     </div>
+
+      <!-- Este bloque permite que se ejecute un input invisible al presionar el botón de subir archivo -->
+      <input type="file" id="fileInput" accept=".json" style="display:none;">
+      <button id="loadJsonButton" onclick="openFile()">
+        <img src="./resources/up-arrow.png" alt = "Cargar Flashcards">
+      </button>
+    
   </body>
 </html>
