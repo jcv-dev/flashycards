@@ -44,11 +44,14 @@ function fetchFlashcardsData(file) {
     reader.readAsText(file);
 }
 
-
+// Esta función añade los botones de la sidebar
+//
 function populateSidebar() {
     const sidebar = document.getElementById('sidebar');
-    sidebar.innerHTML = ''; // Clear existing buttons
+    sidebar.innerHTML = ''; // Borra los botones existentes
     
+    // Se extrae el atributo nombreGrupo de cada objeto y se añade un botón con ese 
+    // nombre a la sidebar
     flashcardsData.forEach(group => {
         const button = document.createElement('button');
         button.textContent = group.nombreGrupo;
@@ -59,10 +62,18 @@ function populateSidebar() {
     });
 }
 
-
+// Esta función cambia el grupo que de flashcards que se está visualizando
+//
 function showFlashcardGroup(group) {
+    // Se actualiza el grupo actual para que sea el grupo que se está visualizando
+    // y se pone pone la flashcard actual en 0 para que al ingresar a un grupo se vea siempre
+    // la primera flashcard
     currentGroupIndex = flashcardsData.indexOf(group);
     currentFlashcardIndex = 0;
+
+    // Si la flashcard que se estaba visualizando antes de cambiar de grupo tenía la respuesta
+    // visible, se oculta. Sin esto, la flashcard del grupo al que se cambia tendrá la respuesta
+    // visible por defecto
     const flashcardAnswer = document.getElementById('flashcardAnswer');
     if (flashcardAnswer.style.display === 'block'){
       toggleFlashcardAnswer();
@@ -73,6 +84,7 @@ function showFlashcardGroup(group) {
     document.getElementById('flashcardContainer').style.display = 'block';
 }
 
+// Cambia la visibilidad de la respuesta de la flashcard
 function toggleFlashcardAnswer() {
     const flashcardAnswer = document.getElementById('flashcardAnswer');
     const flashcardAnswerBtn = document.getElementById('flashcardAnswerBtn');
@@ -86,12 +98,10 @@ function toggleFlashcardAnswer() {
     }
 }
 
-
-
-
 let currentGroupIndex = 0;
 let currentFlashcardIndex = 0;
 
+// Imprime la flashcard indicada en el cuerpo de la app
 function showFlashcard(groupIndex, flashcardIndex) {
     const group = flashcardsData[groupIndex];
     const flashcard = group.grupoFlashcards[flashcardIndex];
@@ -100,7 +110,7 @@ function showFlashcard(groupIndex, flashcardIndex) {
     document.getElementById('flashcardContent').innerHTML = flashcard.contenido;
     document.getElementById('flashcardAnswer').innerHTML = flashcard.respuesta;
 
-    // Disable/enable previous and next buttons based on current flashcard index
+    // Se activan o desactivan los botones de siguiente y anterior.
     document.getElementById('prevButton').disabled = flashcardIndex === 0;
     document.getElementById('nextButton').disabled = flashcardIndex === group.grupoFlashcards.length - 1;
 
@@ -108,23 +118,27 @@ function showFlashcard(groupIndex, flashcardIndex) {
     currentFlashcardIndex = flashcardIndex;
 }
 
+// Llama a la función showFlashcard() ingresando como parametro el índice de 
+// la flashcard actual + 1
 function showNextFlashcard() {
     const flashcardAnswer = document.getElementById('flashcardAnswer');
     if (flashcardAnswer.style.display === 'block') {
       toggleFlashcardAnswer();
   }
 
-    if (currentFlashcardIndex < flashcardsData[currentGroupIndex].grupoFlashcards.length - 1) {
+    if (currentFlashcardIndex < flashcardsData[currentGroupIndex].grupoFlashcards.length - 1) { // Se verifica que no se esté en la última flashcard (no hay siguiente)
         showFlashcard(currentGroupIndex, currentFlashcardIndex + 1);
     }
 }
 
+// Llama a la función showFlashcard() ingresando como parametro el índice de 
+// la flashcard actual - 1
 function showPrevFlashcard() {
     const flashcardAnswer = document.getElementById('flashcardAnswer');
     if (flashcardAnswer.style.display === 'block') {
       toggleFlashcardAnswer();
   }
-    if (currentFlashcardIndex > 0) {
+    if (currentFlashcardIndex > 0) { // Se verifica que no se esté en la primera flashcard (no hay anterior)
         showFlashcard(currentGroupIndex, currentFlashcardIndex - 1);
     }
 }
