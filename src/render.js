@@ -15,18 +15,28 @@ function openFile() {
     });
 }
 
-
+// Se añade la variable flashcardsData para almacenar el contenido del JSON. No se hace const para 
+// permitir que el usuario cargue un nuevo archivo o edite el actual en cualquier momento.
 
 let flashcardsData;
 
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    fetchFlashcardsData(file);
+});
 
 function fetchFlashcardsData(file) {
     const reader = new FileReader();
     reader.onload = function(event) {
         try {
             flashcardsData = JSON.parse(event.target.result);
-            console.log('Flashcards data:', flashcardsData); // Debugging statement
-            populateSidebar(); // Call populateSidebar after flashcardsData is assigned
+            console.log('Flashcards data:', flashcardsData);
+            if (flashcardsData.length !== 0){
+              populateSidebar();
+              showFlashcardGroup(flashcardsData[0]);
+            }else {
+              document.getElementById('flashcardContainer').style.display = 'none';
+            }
         } catch (error) {
             console.error('There was a problem parsing the JSON file:', error);
         }
@@ -43,23 +53,23 @@ function populateSidebar() {
         const button = document.createElement('button');
         button.textContent = group.nombreGrupo;
         button.onclick = () => showFlashcardGroup(group);
-        sidebar.appendChild(button);
+        if (group.grupoFlashcards.length !== 0){
+          sidebar.appendChild(button);
+        }
     });
 }
 
-function showFlashcardGroup(group) {
 
+function showFlashcardGroup(group) {
+    currentGroupIndex = flashcardsData.indexOf(group);
+    currentFlashcardIndex = 0;
     const flashcardAnswer = document.getElementById('flashcardAnswer');
     if (flashcardAnswer.style.display === 'block'){
       toggleFlashcardAnswer();
-  }
+    }
 
-    const firstFlashcard = group.grupoFlashcards[0];
-    
-    document.getElementById('flashcardTitle').innerHTML = `<b>${firstFlashcard.titulo}</b>`;
-    document.getElementById('flashcardContent').innerHTML = firstFlashcard.contenido;
-    document.getElementById('flashcardAnswer').innerHTML = firstFlashcard.respuesta;
-    
+    showFlashcard(currentGroupIndex, currentFlashcardIndex);  
+
     document.getElementById('flashcardContainer').style.display = 'block';
 }
 
@@ -76,11 +86,7 @@ function toggleFlashcardAnswer() {
     }
 }
 
-// Listen for file input change
-document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    fetchFlashcardsData(file);
-});
+
 
 
 let currentGroupIndex = 0;
