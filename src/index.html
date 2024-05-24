@@ -10,32 +10,31 @@
 
   <body>
   
-    <div class="sidebar" id="sidebar"></div>
+    <aside class="sidebar" id="sidebar"></aside>
+    <div id="title">⚡️ Flashycards ⚡️</div>
+    
+    <main role="main" class="content">
 
-    <div class="content">
-       <div id="title"><h1>⚡️ Flashycards ⚡️</h1></div>
-          
         <div id="flashcardContainer" style="display:none;">
           <div id="flashcardTitle"></div>
           <div id="flashcardContent"></div>
           <button id="flashcardAnswerButton" onclick="toggleFlashcardAnswer()">Mostrar respuesta</button>
           <div id="flashcardAnswer" style="display:none;"></div>
-
-          <div id="navigationButtons">
+          
+          <nav id="navigationButtons">
             <button id="prevButton" onclick="showPrevFlashcard()">Anterior</button>
-            <button id="nextButton" onclick="showNextFlashcard()">Siguiente</button>
-          </div>
+            <button id="nextButton" onclick="showNextFlashcard()">Siguiente</button> 
+          </nav>
         </div>
-    </div>
-    
-
-
-
-      <!-- Este bloque permite que se ejecute un input invisible al presionar el botón de subir archivo -->
-      <input type="file" id="fileInput" accept=".json" style="display:none;">
+      
       <button id="loadJsonButton" onclick="openFile()">
         <img src="./resources/up-arrow.png" alt = "Cargar Flashcards">
       </button>
+
+    </main>
+    
+      <!-- Este bloque permite que se ejecute un input invisible al presionar el botón de subir archivo -->
+    <input type="file" id="fileInput" accept=".json" style="display:none;">
     
   </body>
 </html>

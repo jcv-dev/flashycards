@@ -15,13 +15,16 @@ body {
 }
 
 #title {
+    font-size: 36px;
+    font-weight: bold;
     position: absolute;
     top: 50px;
     left: 200px;
     align-items:center;
     justify-content:center;
     right: 0;
-    padding: 20px; /* Adjust padding as needed */
+    padding-bottom: 40px;
+    padding-left: 40px;
     border-bottom: 1px solid #ccc; /* Example border style */
 }
 

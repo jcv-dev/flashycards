@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+  </head>
+  <body>
+    
+    <form onsubmit="signIn()">
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <button type="submit">Sign In</button>
+    </form>
+
+    <script type="module" src="login.js"></script>
+    <script>
+      function signIn() {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        createUserEmailPassword(email, password);
+      }
+    </script>
+    
+  </body>
+</html>
+
