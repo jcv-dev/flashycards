@@ -95,8 +95,53 @@ body {
 }
 
 #loadJsonButton img {
-    width: 75px;
-    height: auto; 
+    height: 80px;
+    width: auto;
+}
+
+#newFlashcardButton {
+  position: fixed;
+  bottom: 40px;
+  right: 120px;
+  border:none;
+  background: none;
+  padding: 0;
+  z-index: 999;
+}
+
+#newFlashcardButton img {
+  height: 80px;
+  width: auto;
+}
+
+#deleteFlashcardButton {
+  position: fixed;
+  bottom: 40px;
+  right: 205px;
+  border:none;
+  background: none;
+  padding: 0;
+  z-index: 999;
+}
+
+#deleteFlashcardButton img {
+  height: 80px;
+  width: auto;
+}
+
+#deleteCategoryButton {
+  position: fixed;
+  bottom: 40px;
+  right: 290px;
+  border:none;
+  background: none;
+  padding: 0;
+  z-index: 999;
+}
+
+#deleteCategoryButton img {
+  height: 80px;
+  width: auto;
 }
 
 html, body{

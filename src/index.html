@@ -28,13 +28,25 @@
         </div>
       
       <button id="loadJsonButton" onclick="openFile()">
-        <img src="./resources/up-arrow.png" alt = "Cargar Flashcards">
+        <img src="./resources/up-arrow.png" alt = "Cargar Flashcards" title="Cargar Flashcards">
+      </button>
+
+      <button id="newFlashcardButton" onclick="newFlashcard()">
+        <img src="./resources/plus.png" alt="Nueva Flashcard" title="Nueva Flashcard">
+      </button>
+
+      <button id="deleteFlashcardButton" onclick="deleteFlashcard()">
+        <img src="./resources/minus.png" alt="Eliminar Flashcard" title="Eliminar Flashcard">
+      </button>
+
+      <button id="deleteCategoryButton" onclick="deleteCategory()">
+        <img src="./resources/remove.png" alt="Eliminar categoría" title="Eliminar categoría">
       </button>
 
     </main>
     
       <!-- Este bloque permite que se ejecute un input invisible al presionar el botón de subir archivo -->
-    <input type="file" id="fileInput" accept=".json" style="display:none;">
+    <!-- <input type="file" id="fileInput" accept=".json" style="display:none;"> -->
     
   </body>
 </html>

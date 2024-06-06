@@ -29,5 +29,6 @@ const auth = getAuth(app);
 export { analytics, 
         auth, 
         createUserWithEmailAndPassword,
-        sendEmailVerification
+        sendEmailVerification,
+        signInWithEmailAndPassword
 };
